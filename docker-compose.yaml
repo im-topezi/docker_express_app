@@ -1,0 +1,17 @@
+services:
+  express_app:
+    container_name: express_app
+    from: topezi/express-app
+    ports: 
+      - "8080:8080"
+
+  watchtower:
+    image: containrrr/watchtower
+    environment:
+      - WATCHTOWER_POLL_INTERVAL=60 # Poll every 60 seconds
+      - WATCHTOWER_RUN_ONCE=true
+    volumes:
+      - /run/user/1276922/docker.sock:/var/run/docker.sock
+    container_name: watchtower
+    command: express_app
+
