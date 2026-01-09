@@ -1,7 +1,7 @@
 services:
   express_app:
     container_name: express_app
-    from: topezi/express-app
+    image: topezi/express-app
     ports: 
       - "8080:8080"
 
